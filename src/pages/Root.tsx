@@ -15,13 +15,13 @@ function RootLayout() {
 				}}></div>
 
 			{/* Navigation */}
-			<nav className='relative z-10 flex justify-between items-center px-8 py-10'>
+			<nav className='relative z-10 flex justify-between items-center px-8 pt-10 pb-4 md:py-10'>
 				{/* Navigation Menu */}
 				<MainHeader />
 			</nav>
 
 			{/* Main Content */}
-			<main className='relative z-10'>
+			<main className='mx-6'>
 				<Outlet />
 			</main>
 		</div>
