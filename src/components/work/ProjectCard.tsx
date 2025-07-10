@@ -1,12 +1,14 @@
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import TechnologyIcons from './TechnologyIcons'
+import ProjectScreenshot from './ProjectScreenshot'
+import { type SkillName } from '@/data/skillConstants'
 
 interface Project {
 	id: number
 	title: string
 	description: string
-	technologies: string[]
+	technologies: SkillName[]
 	category: string
 	github?: string
 	live?: string
@@ -33,39 +35,26 @@ export default function ProjectCard({
 					? 'rounded-2xl hover:-translate-y-2'
 					: 'rounded-xl hover:-translate-y-1'
 			}`}>
-			<div
-				className={`aspect-video bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center ${
-					isFeatured ? '' : 'from-blue-500/10 to-purple-500/10'
-				}`}>
-				{project.image ? (
-					<img
-						src={project.image}
-						alt={project.title}
-						className='w-full h-full object-cover'
-					/>
-				) : (
-					<div
-						className={`text-muted-foreground ${
-							isFeatured ? 'text-4xl' : 'text-2xl'
-						}`}>
-						{project.emoji || '💻'}
-					</div>
-				)}
-			</div>
+			<ProjectScreenshot
+				image={project.image}
+				emoji={project.emoji || '💻'}
+				alt={`${project.title} preview`}
+				className={isFeatured ? 'text-4xl' : 'text-2xl'}
+			/>
 			<div className={isFeatured ? 'p-6' : 'p-4'}>
 				<div
 					className={`flex items-start justify-between mb-${
 						isFeatured ? '4' : '3'
 					}`}>
 					<h3
-						className={`font-semibold text-foreground group-hover:text-primary transition-colors ${
+						className={`font-semibold text-foreground group-hover:text-primary transition-colors flex-1 mr-3 ${
 							isFeatured ? 'text-xl' : 'text-lg'
 						}`}>
 						{project.title}
 					</h3>
 					<Badge
 						variant={isFeatured ? 'secondary' : 'outline'}
-						className='text-xs'>
+						className='text-xs whitespace-nowrap min-w-fit px-3 flex-shrink-0'>
 						{project.category}
 					</Badge>
 				</div>
@@ -78,8 +67,8 @@ export default function ProjectCard({
 				<div className={`mb-${isFeatured ? '4' : '3'}`}>
 					<TechnologyIcons
 						technologies={project.technologies}
-						maxDisplay={isFeatured ? undefined : 2}
-						showCount={!isFeatured}
+						maxDisplay={5}
+						showCount={true}
 						className={isFeatured ? 'gap-2' : 'gap-1'}
 					/>
 				</div>

@@ -1,10 +1,11 @@
+import type { SkillName } from '@/data/skillConstants'
 import ProjectCard from './ProjectCard'
 
 interface Project {
 	id: number
 	title: string
 	description: string
-	technologies: string[]
+	technologies: SkillName[]
 	category: string
 	github?: string
 	live?: string

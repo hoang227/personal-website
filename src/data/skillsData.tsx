@@ -32,6 +32,8 @@ import HydrogenLogo from '@/assets/svg/Hydrogen.svg'
 import FabricJSLogo from '@/assets/svg/FabricJS.svg'
 import RadixUILogo from '@/assets/svg/RadixUI.svg'
 
+import { SKILLS, type SkillName } from './skillConstants'
+
 export interface Skill {
 	icon: React.ReactNode
 	label: string
@@ -44,202 +46,202 @@ export interface SkillCategory {
 }
 
 // All available skills with their icons
-export const allSkills: Record<string, Skill> = {
+export const allSkills: Record<SkillName, Skill> = {
 	// Programming Languages
-	JavaScript: {
+	[SKILLS.JAVASCRIPT]: {
 		icon: <SiJavascript className='text-yellow-400' />,
-		label: 'JavaScript',
+		label: SKILLS.JAVASCRIPT,
 		color: 'text-yellow-400',
 	},
-	TypeScript: {
+	[SKILLS.TYPESCRIPT]: {
 		icon: <SiTypescript className='text-blue-700' />,
-		label: 'TypeScript',
+		label: SKILLS.TYPESCRIPT,
 		color: 'text-blue-700',
 	},
-	HTML: {
+	[SKILLS.HTML]: {
 		icon: <SiHtml5 className='text-orange-500' />,
-		label: 'HTML',
+		label: SKILLS.HTML,
 		color: 'text-orange-500',
 	},
-	CSS: {
+	[SKILLS.CSS]: {
 		icon: <SiCss3 className='text-blue-400' />,
-		label: 'CSS',
+		label: SKILLS.CSS,
 		color: 'text-blue-400',
 	},
-	Python: {
+	[SKILLS.PYTHON]: {
 		icon: <SiPython className='text-blue-500' />,
-		label: 'Python',
+		label: SKILLS.PYTHON,
 		color: 'text-blue-500',
 	},
-	Java: {
+	[SKILLS.JAVA]: {
 		icon: <FaJava className='text-orange-600' />,
-		label: 'Java',
+		label: SKILLS.JAVA,
 		color: 'text-orange-600',
 	},
 
 	// Frameworks & Libraries
-	React: {
+	[SKILLS.REACT]: {
 		icon: <SiReact className='text-cyan-500' />,
-		label: 'React',
+		label: SKILLS.REACT,
 		color: 'text-cyan-500',
 	},
-	'React.js': {
+	[SKILLS.REACT_JS]: {
 		icon: <SiReact className='text-cyan-500' />,
-		label: 'React.js',
+		label: SKILLS.REACT_JS,
 		color: 'text-cyan-500',
 	},
-	'Next.js': {
+	[SKILLS.NEXT_JS]: {
 		icon: <SiNextdotjs className='text-black dark:text-white' />,
-		label: 'Next.js',
+		label: SKILLS.NEXT_JS,
 		color: 'text-black dark:text-white',
 	},
-	Redux: {
+	[SKILLS.REDUX]: {
 		icon: <SiRedux className='text-purple-500' />,
-		label: 'Redux',
+		label: SKILLS.REDUX,
 		color: 'text-purple-500',
 	},
-	'Tailwind CSS': {
+	[SKILLS.TAILWIND_CSS]: {
 		icon: <SiTailwindcss className='text-sky-400' />,
-		label: 'Tailwind CSS',
+		label: SKILLS.TAILWIND_CSS,
 		color: 'text-sky-400',
 	},
-	TailwindCSS: {
+	[SKILLS.TAILWIND_CSS_ALT]: {
 		icon: <SiTailwindcss className='text-sky-400' />,
-		label: 'TailwindCSS',
+		label: SKILLS.TAILWIND_CSS_ALT,
 		color: 'text-sky-400',
 	},
-	Shopify: {
+	[SKILLS.SHOPIFY]: {
 		icon: <FaShopify className='text-green-500' />,
-		label: 'Shopify',
+		label: SKILLS.SHOPIFY,
 		color: 'text-green-500',
 	},
-	Hydrogen: {
+	[SKILLS.HYDROGEN]: {
 		icon: <img src={HydrogenLogo} alt='Hydrogen' className='w-4 h-4' />,
-		label: 'Hydrogen',
+		label: SKILLS.HYDROGEN,
 	},
-	'Fabric.js': {
+	[SKILLS.FABRIC_JS]: {
 		icon: <img src={FabricJSLogo} alt='Fabric.js' className='w-4 h-4' />,
-		label: 'Fabric.js',
+		label: SKILLS.FABRIC_JS,
 	},
-	RadixUI: {
+	[SKILLS.RADIX_UI]: {
 		icon: <img src={RadixUILogo} alt='RadixUI' className='w-4 h-4' />,
-		label: 'RadixUI',
+		label: SKILLS.RADIX_UI,
 	},
-	'Node.js': {
+	[SKILLS.NODE_JS]: {
 		icon: <SiNodedotjs className='text-green-600' />,
-		label: 'Node.js',
+		label: SKILLS.NODE_JS,
 		color: 'text-green-600',
 	},
-	Vue3: {
+	[SKILLS.VUE3]: {
 		icon: <SiVuedotjs className='text-green-500' />,
-		label: 'Vue3',
+		label: SKILLS.VUE3,
 		color: 'text-green-500',
 	},
-	'Spring Boot': {
+	[SKILLS.SPRING_BOOT]: {
 		icon: <SiSpringboot className='text-green-600' />,
-		label: 'Spring Boot',
+		label: SKILLS.SPRING_BOOT,
 		color: 'text-green-600',
 	},
-	'React Native': {
+	[SKILLS.REACT_NATIVE]: {
 		icon: <SiReact className='text-cyan-500' />,
-		label: 'React Native',
+		label: SKILLS.REACT_NATIVE,
 		color: 'text-cyan-500',
 	},
 
 	// Database & APIs
-	MySQL: {
+	[SKILLS.MYSQL]: {
 		icon: <DiMysql className='text-black' />,
-		label: 'MySQL',
+		label: SKILLS.MYSQL,
 		color: 'text-black',
 	},
-	PostgreSQL: {
+	[SKILLS.POSTGRESQL]: {
 		icon: <SiPostgresql className='text-blue-600' />,
-		label: 'PostgreSQL',
+		label: SKILLS.POSTGRESQL,
 		color: 'text-blue-600',
 	},
-	GraphQL: {
+	[SKILLS.GRAPHQL]: {
 		icon: <SiGraphql className='text-pink-400' />,
-		label: 'GraphQL',
+		label: SKILLS.GRAPHQL,
 		color: 'text-pink-400',
 	},
-	Firebase: {
+	[SKILLS.FIREBASE]: {
 		icon: <SiFirebase className='text-orange-400' />,
-		label: 'Firebase',
+		label: SKILLS.FIREBASE,
 		color: 'text-orange-400',
 	},
-	Supabase: {
+	[SKILLS.SUPABASE]: {
 		icon: <SiSupabase className='text-teal-600' />,
-		label: 'Supabase',
+		label: SKILLS.SUPABASE,
 		color: 'text-teal-600',
 	},
-	MongoDB: {
+	[SKILLS.MONGODB]: {
 		icon: <SiMongodb className='text-green-500' />,
-		label: 'MongoDB',
+		label: SKILLS.MONGODB,
 		color: 'text-green-500',
 	},
 
 	// Tools & Services
-	Stripe: {
+	[SKILLS.STRIPE]: {
 		icon: <SiStripe className='text-purple-500' />,
-		label: 'Stripe',
+		label: SKILLS.STRIPE,
 		color: 'text-purple-500',
 	},
-	'Socket.io': {
+	[SKILLS.SOCKET_IO]: {
 		icon: <SiSocketdotio className='text-black' />,
-		label: 'Socket.io',
+		label: SKILLS.SOCKET_IO,
 		color: 'text-black',
 	},
-	'Chart.js': {
+	[SKILLS.CHART_JS]: {
 		icon: <SiChartdotjs className='text-red-500' />,
-		label: 'Chart.js',
+		label: SKILLS.CHART_JS,
 		color: 'text-red-500',
 	},
-	'OpenWeather API': {
+	[SKILLS.OPENWEATHER_API]: {
 		icon: <span className='text-orange-500 font-bold text-sm'>🌤️</span>,
-		label: 'OpenWeather API',
+		label: SKILLS.OPENWEATHER_API,
 		color: 'text-orange-500',
 	},
-	WebdriverIO: {
+	[SKILLS.WEBDRIVER_IO]: {
 		icon: <SiWebdriverio className='text-orange-400' />,
-		label: 'WebdriverIO',
+		label: SKILLS.WEBDRIVER_IO,
 		color: 'text-orange-400',
 	},
-	Git: {
+	[SKILLS.GIT]: {
 		icon: <SiGit className='text-orange-500' />,
-		label: 'Git',
+		label: SKILLS.GIT,
 		color: 'text-orange-500',
 	},
-	'CI/CD': {
+	[SKILLS.CI_CD]: {
 		icon: <SiGithubactions className='text-blue-500' />,
-		label: 'CI/CD',
+		label: SKILLS.CI_CD,
 		color: 'text-blue-500',
 	},
-	Excel: {
+	[SKILLS.EXCEL]: {
 		icon: <RiFileExcel2Line className='text-green-600' />,
-		label: 'Excel',
+		label: SKILLS.EXCEL,
 		color: 'text-green-600',
 	},
-	'Agile/Scrum': {
+	[SKILLS.AGILE_SCRUM]: {
 		icon: <DiScrum className='text-black' />,
-		label: 'Agile/Scrum',
+		label: SKILLS.AGILE_SCRUM,
 		color: 'text-black',
 	},
 
 	// Additional technologies
-	Liquid: {
+	[SKILLS.LIQUID]: {
 		icon: <span className='text-blue-600 font-bold text-sm'>L</span>,
-		label: 'Liquid',
+		label: SKILLS.LIQUID,
 		color: 'text-blue-600',
 	},
 }
 
 // Helper function to get skill by name
-export function getSkillByName(name: string): Skill | undefined {
+export function getSkillByName(name: SkillName): Skill | undefined {
 	return allSkills[name]
 }
 
 // Helper function to get skills by names array
-export function getSkillsByNames(names: string[]): Skill[] {
+export function getSkillsByNames(names: SkillName[]): Skill[] {
 	return names.map((name) => allSkills[name]).filter(Boolean)
 }
 
@@ -248,47 +250,47 @@ export const defaultSkillCategories: SkillCategory[] = [
 	{
 		title: 'Programming Languages',
 		skills: [
-			allSkills['JavaScript'],
-			allSkills['TypeScript'],
-			allSkills['HTML'],
-			allSkills['CSS'],
-			allSkills['Python'],
-			allSkills['Java'],
+			allSkills[SKILLS.JAVASCRIPT],
+			allSkills[SKILLS.TYPESCRIPT],
+			allSkills[SKILLS.HTML],
+			allSkills[SKILLS.CSS],
+			allSkills[SKILLS.PYTHON],
+			allSkills[SKILLS.JAVA],
 		],
 	},
 	{
 		title: 'Frameworks',
 		skills: [
-			allSkills['React.js'],
-			allSkills['Next.js'],
-			allSkills['Redux'],
-			allSkills['TailwindCSS'],
-			allSkills['Shopify'],
-			allSkills['Hydrogen'],
-			allSkills['Fabric.js'],
-			allSkills['RadixUI'],
+			allSkills[SKILLS.REACT_JS],
+			allSkills[SKILLS.NEXT_JS],
+			allSkills[SKILLS.REDUX],
+			allSkills[SKILLS.TAILWIND_CSS_ALT],
+			allSkills[SKILLS.SHOPIFY],
+			allSkills[SKILLS.HYDROGEN],
+			allSkills[SKILLS.FABRIC_JS],
+			allSkills[SKILLS.RADIX_UI],
 		],
 	},
 	{
 		title: 'Database Management',
 		skills: [
-			allSkills['MySQL'],
-			allSkills['GraphQL'],
-			allSkills['Firebase'],
-			allSkills['Supabase'],
+			allSkills[SKILLS.MYSQL],
+			allSkills[SKILLS.GRAPHQL],
+			allSkills[SKILLS.FIREBASE],
+			allSkills[SKILLS.SUPABASE],
 		],
 	},
 	{
 		title: 'Testing Tools',
-		skills: [allSkills['WebdriverIO']],
+		skills: [allSkills[SKILLS.WEBDRIVER_IO]],
 	},
 	{
 		title: 'Others',
 		skills: [
-			allSkills['Git'],
-			allSkills['CI/CD'],
-			allSkills['Excel'],
-			allSkills['Agile/Scrum'],
+			allSkills[SKILLS.GIT],
+			allSkills[SKILLS.CI_CD],
+			allSkills[SKILLS.EXCEL],
+			allSkills[SKILLS.AGILE_SCRUM],
 		],
 	},
 ]

@@ -1,7 +1,8 @@
 import { getSkillsByNames } from '@/data/skillsData'
+import { type SkillName } from '@/data/skillConstants'
 
 interface TechnologyIconsProps {
-	technologies: string[]
+	technologies: SkillName[]
 	maxDisplay?: number
 	showCount?: boolean
 	className?: string
@@ -9,7 +10,7 @@ interface TechnologyIconsProps {
 
 export default function TechnologyIcons({
 	technologies,
-	maxDisplay = 2,
+	maxDisplay = 5,
 	showCount = true,
 	className = '',
 }: TechnologyIconsProps) {
