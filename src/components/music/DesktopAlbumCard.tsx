@@ -1,10 +1,10 @@
 import { ExternalLink } from 'lucide-react'
-import type { SpotifyAlbum } from './types'
+import type { Album } from '@/data/musicData'
 import { AlbumCover } from './AlbumCover'
 import { AlbumMetadata } from './AlbumMetadata'
 
 interface DesktopAlbumCardProps {
-	album: SpotifyAlbum
+	album: Album
 }
 
 export const DesktopAlbumCard = ({ album }: DesktopAlbumCardProps) => (

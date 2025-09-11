@@ -1,18 +1,16 @@
 import { Music } from 'lucide-react'
-import type { SpotifyAlbum } from './types'
+import type { Album } from '@/data/musicData'
 
 interface AlbumCoverProps {
-	album: SpotifyAlbum
+	album: Album
 	className?: string
 }
 
 export const AlbumCover = ({ album, className = '' }: AlbumCoverProps) => {
-	const albumImage = album.images[0]?.url
-
-	if (albumImage) {
+	if (album.imageUrl) {
 		return (
 			<img
-				src={albumImage}
+				src={album.imageUrl}
 				alt={`${album.name} album cover`}
 				className={`rounded-lg object-cover group-hover:scale-105 transition-transform duration-200 shadow-lg ${className}`}
 			/>

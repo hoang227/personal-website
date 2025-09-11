@@ -1,15 +1,15 @@
-import type { SpotifyAlbum } from './types'
+import type { Album } from '@/data/musicData'
 import { MobileAlbumCard } from './MobileAlbumCard'
 import { DesktopAlbumCard } from './DesktopAlbumCard'
 
 interface AlbumCardProps {
-	album: SpotifyAlbum
+	album: Album
 }
 
 export const AlbumCard = ({ album }: AlbumCardProps) => (
 	<div className='group'>
 		<a
-			href={album.external_urls.spotify}
+			href={album.spotifyUrl}
 			target='_blank'
 			rel='noopener noreferrer'
 			className='block'>

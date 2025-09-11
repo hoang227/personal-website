@@ -42,9 +42,9 @@ export default function MusicPage() {
 
 				<div className='mb-16 space-y-8'>
 					<div className='space-y-6 animate-slide-up animation-delay-200'>
-						{/* Favorite Albums - Spotify Integration */}
+						{/* Favorite Albums */}
 						<FavoriteAlbumsSection
-							albumIds={musicData.favoriteAlbums.map((album) => album.id)}
+							albums={musicData.favoriteAlbums}
 							title='Current Favorite Albums'
 						/>
 					</div>

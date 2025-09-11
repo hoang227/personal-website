@@ -4,6 +4,7 @@ import { extractAllShotsEXIF, type ShotEXIFData } from '@/lib/shotsExtract'
 export const ShotsGallery = () => {
 	const [shotsData, setShotsData] = useState<ShotEXIFData[]>([])
 	const [isLoading, setIsLoading] = useState(true)
+	const [imagesLoaded, setImagesLoaded] = useState(0)
 	const [error, setError] = useState<string | null>(null)
 
 	// Function to shuffle array randomly
@@ -24,7 +25,6 @@ export const ShotsGallery = () => {
 				setShotsData(shuffledData)
 			} catch (error) {
 				setError('Failed to load shots data')
-			} finally {
 				setIsLoading(false)
 			}
 		}
@@ -32,15 +32,22 @@ export const ShotsGallery = () => {
 		loadShotsData()
 	}, [])
 
+	// Handle image loading
+	const handleImageLoad = () => {
+		setImagesLoaded((prev) => prev + 1)
+	}
+
+	// Check if all images are loaded
+	useEffect(() => {
+		if (shotsData.length > 0 && imagesLoaded >= shotsData.length) {
+			setIsLoading(false)
+		}
+	}, [imagesLoaded, shotsData.length])
+
 	return (
 		<div className='bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700'>
 			<h4 className='font-inter font-semibold text-xl text-foreground mb-4'>
-				Featured Shots ({shotsData.length})
-				{isLoading && (
-					<span className='text-sm text-gray-500 ml-2'>
-						(Loading EXIF data...)
-					</span>
-				)}
+				Featured Shots
 			</h4>
 
 			{error && (
@@ -73,6 +80,7 @@ export const ShotsGallery = () => {
 									alt={shot.id}
 									className='w-full h-full object-cover group-hover:brightness-110 transition-all duration-300'
 									loading='lazy'
+									onLoad={handleImageLoad}
 								/>
 							</div>
 
@@ -89,12 +97,22 @@ export const ShotsGallery = () => {
 			</div>
 
 			{/* Loading state */}
-			{isLoading && shotsData.length === 0 && (
+			{isLoading && (
 				<div className='text-center py-12'>
 					<div className='text-6xl opacity-40 mb-4'>📸</div>
 					<p className='text-gray-500 dark:text-gray-400 font-inter'>
-						Loading shots with EXIF data...
+						Loading images...
 					</p>
+					<div className='w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-4'>
+						<div
+							className='bg-blue-600 h-2 rounded-full transition-all duration-300'
+							style={{
+								width:
+									shotsData.length > 0
+										? `${(imagesLoaded / shotsData.length) * 100}%`
+										: '0%',
+							}}></div>
+					</div>
 				</div>
 			)}
 		</div>

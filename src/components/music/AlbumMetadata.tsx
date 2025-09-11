@@ -1,13 +1,13 @@
 import { Calendar, Disc } from 'lucide-react'
-import type { SpotifyAlbum } from './types'
+import type { Album } from '@/data/musicData'
 import { formatReleaseDate } from './utils'
 
 interface AlbumMetadataProps {
-	album: SpotifyAlbum
+	album: Album
 }
 
 export const AlbumMetadata = ({ album }: AlbumMetadataProps) => {
-	const artistNames = album.artists.map((artist) => artist.name).join(', ')
+	const artistNames = album.artists.join(', ')
 
 	return (
 		<>
@@ -20,11 +20,11 @@ export const AlbumMetadata = ({ album }: AlbumMetadataProps) => {
 			<div className='flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-400'>
 				<div className='flex items-center space-x-1'>
 					<Calendar className='w-3 h-3' />
-					<span>{formatReleaseDate(album.release_date)}</span>
+					<span>{formatReleaseDate(album.releaseDate)}</span>
 				</div>
 				<div className='flex items-center space-x-1'>
 					<Disc className='w-3 h-3' />
-					<span>{album.total_tracks} tracks</span>
+					<span>{album.totalTracks} tracks</span>
 				</div>
 			</div>
 		</>
