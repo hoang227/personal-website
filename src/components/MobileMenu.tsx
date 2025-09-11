@@ -7,6 +7,14 @@ interface MobileMenuProps {
 	closeMenu: () => void
 }
 
+const navMenuItems = [
+	{ title: 'Home', path: '/', icon: '🏠' },
+	{ title: 'About', path: '/about', icon: '🙋🏻‍♂️' },
+	{ title: 'Work', path: '/work', icon: '💼' },
+	{ title: 'Music', path: '/music', icon: '🎵' },
+	{ title: 'Shots', path: '/shots', icon: '📸' },
+]
+
 const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, isOpen }) => {
 	return (
 		<>
@@ -27,51 +35,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, isOpen }) => {
 				</Button>
 				<div className='px-6 py-12'>
 					<nav className='space-y-4'>
-						<StyledNavLink
-							to='/'
-							onClick={closeMenu}
-							className={`block py-3 px-4 rounded-lg hover:bg-accent ${
-								isOpen ? 'animate-slide-in-right' : ''
-							}`}
-							style={{ animationDelay: '80ms' }}>
-							Home
-						</StyledNavLink>
-						<StyledNavLink
-							to='/about'
-							onClick={closeMenu}
-							className={`block py-3 px-4 rounded-lg hover:bg-accent ${
-								isOpen ? 'animate-slide-in-right' : ''
-							}`}
-							style={{ animationDelay: '160ms' }}>
-							About
-						</StyledNavLink>
-						<StyledNavLink
-							to='/work'
-							onClick={closeMenu}
-							className={`block py-3 px-4 rounded-lg hover:bg-accent ${
-								isOpen ? 'animate-slide-in-right' : ''
-							}`}
-							style={{ animationDelay: '240ms' }}>
-							Work
-						</StyledNavLink>
-						<StyledNavLink
-							to='/shots'
-							onClick={closeMenu}
-							className={`block py-3 px-4 rounded-lg hover:bg-accent ${
-								isOpen ? 'animate-slide-in-right' : ''
-							}`}
-							style={{ animationDelay: '320ms' }}>
-							📸 Shots
-						</StyledNavLink>
-						<StyledNavLink
-							to='/music'
-							onClick={closeMenu}
-							className={`block py-3 px-4 rounded-lg hover:bg-accent ${
-								isOpen ? 'animate-slide-in-right' : ''
-							}`}
-							style={{ animationDelay: '400ms' }}>
-							🎵 Music
-						</StyledNavLink>
+						{navMenuItems.map((item, index) => (
+							<StyledNavLink
+								key={item.title}
+								to={item.path}
+								onClick={closeMenu}
+								className={`block py-3 px-4 rounded-lg hover:bg-accent ${
+									isOpen ? 'animate-slide-in-right' : ''
+								}`}
+								style={{ animationDelay: `${(index + 1) * 80}ms` }}>
+								<span className='text-sm opacity-80 mr-2'>{item.icon}</span>
+								{item.title}
+							</StyledNavLink>
+						))}
 					</nav>
 				</div>
 			</div>

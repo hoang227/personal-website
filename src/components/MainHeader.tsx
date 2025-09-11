@@ -3,12 +3,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuItem,
 } from '@/components/ui/navigation-menu'
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+
 import { ModeToggle } from './ModeToggle'
 import StyledNavLink from './StyledNavLink'
 import MobileMenu from './MobileMenu'
@@ -20,25 +15,27 @@ const navMenuItems = [
 	{
 		title: 'Home',
 		path: '/',
+		icon: '🏠',
 	},
 	{
 		title: 'About',
 		path: '/about',
+		icon: '📋',
 	},
 	{
 		title: 'Work',
 		path: '/work',
-	},
-]
-
-const interestsItems = [
-	{
-		title: '📸 Shots',
-		path: '/shots',
+		icon: '💼',
 	},
 	{
-		title: '🎵 Music',
+		title: 'Music',
 		path: '/music',
+		icon: '🎵',
+	},
+	{
+		title: 'Shots',
+		path: '/shots',
+		icon: '📸',
 	},
 ]
 
@@ -62,27 +59,12 @@ const MainHeader: React.FC = () => {
 					<NavigationMenuList className='flex space-x-1'>
 						{navMenuItems.map((item) => (
 							<NavigationMenuItem key={item.title}>
-								<StyledNavLink to={item.path}>{item.title}</StyledNavLink>
+								<StyledNavLink className='flex items-center' to={item.path}>
+									<span className='text-sm opacity-80 mr-2'>{item.icon}</span>
+									{item.title}
+								</StyledNavLink>
 							</NavigationMenuItem>
 						))}
-
-						{/* Interests Dropdown */}
-						<NavigationMenuItem>
-							<DropdownMenu>
-								<DropdownMenuTrigger asChild>
-									<button className='flex items-center gap-1 px-4 py-2 text-md font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'>
-										Interests
-									</button>
-								</DropdownMenuTrigger>
-								<DropdownMenuContent align='start' className='w-32'>
-									{interestsItems.map((item) => (
-										<DropdownMenuItem key={item.title} asChild>
-											<StyledNavLink to={item.path}>{item.title}</StyledNavLink>
-										</DropdownMenuItem>
-									))}
-								</DropdownMenuContent>
-							</DropdownMenu>
-						</NavigationMenuItem>
 					</NavigationMenuList>
 				</NavigationMenu>
 			</div>

@@ -14,7 +14,7 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
 			<h2 className='font-inter font-bold text-2xl md:text-3xl text-foreground'>
 				Technical Skills
 			</h2>
-			<div className='space-y-4'>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
 				{skillsToShow.map((category, index) => (
 					<Card key={index}>
 						<CardTitle className='mb-2'>{category.title}</CardTitle>

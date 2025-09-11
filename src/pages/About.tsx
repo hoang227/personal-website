@@ -4,6 +4,7 @@ import ExperienceSection from '@/components/about/ExperienceSection'
 import SkillsSection from '@/components/about/SkillsSection'
 import CTASection from '@/components/about/CTASection'
 import { aboutData } from '@/data/aboutData'
+import LeadershipSection from '@/components/about/LeadershipSection'
 
 export default function AboutPage() {
 	return (
@@ -20,11 +21,14 @@ export default function AboutPage() {
 					{/* Education */}
 					<EducationSection education={aboutData.education} />
 
+					{/* Skills */}
+					<SkillsSection />
+
 					{/* Experience */}
 					<ExperienceSection experience={aboutData.experience} />
 
-					{/* Skills */}
-					<SkillsSection />
+					{/* Leadership */}
+					<LeadershipSection leadership={aboutData.leadership} />
 				</div>
 
 				{/* CTA Section */}

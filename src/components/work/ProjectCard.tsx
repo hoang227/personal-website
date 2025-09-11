@@ -72,7 +72,7 @@ export default function ProjectCard({
 						className={isFeatured ? 'gap-2' : 'gap-1'}
 					/>
 				</div>
-				<div className={`flex gap-${isFeatured ? '3' : '2'}`}>
+				<div className={`my-3 flex gap-${isFeatured ? '3' : '2'}`}>
 					{project.github && (
 						<Button
 							variant={isFeatured ? 'outline' : 'ghost'}

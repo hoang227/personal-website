@@ -1,67 +1,48 @@
 import { Button } from '@/components/ui/button'
-import { RightArrowSvg } from '@/components/svg/arrows'
+import ShotsHeader from '@/components/shots/ShotsHeader'
+import { ShotsDescription } from '@/components/shots/ShotsDescription'
+import { ShotsGallery } from '@/components/shots/ShotsGallery'
+import VSCOSeal from '@/assets/svg/VSCO_Seal.svg'
 
 export default function ShotsPage() {
 	return (
-		<div className='h-full flex flex-col justify-center px-8 lg:p-12'>
-			<div className='max-w-6xl mx-auto'>
-				<div className='mb-16 space-y-4'>
-					<h1 className='font-inter font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground animate-slide-up leading-tight'>
-						Shots
-					</h1>
-					<h2 className='font-inter font-semibold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-foreground animate-slide-up animation-delay-200 leading-tight'>
-						Photography Collection
-					</h2>
-				</div>
-
-				<div className='mb-16 space-y-8'>
-					<p className='text-md md:text-lg lg:text-xl font-inter font-extralight leading-relaxed text-foreground animate-slide-up animation-delay-400 max-w-4xl'>
-						I love capturing moments through the lens. Photography allows me to
-						see the world from different perspectives and share stories through
-						visual storytelling.
-					</p>
-
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up animation-delay-600'>
-						<div className='aspect-square bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center'>
-							<p className='text-gray-500 dark:text-gray-400 font-inter'>
-								Photo 1
-							</p>
-						</div>
-						<div className='aspect-square bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center'>
-							<p className='text-gray-500 dark:text-gray-400 font-inter'>
-								Photo 2
-							</p>
-						</div>
-						<div className='aspect-square bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center'>
-							<p className='text-gray-500 dark:text-gray-400 font-inter'>
-								Photo 3
-							</p>
-						</div>
-						<div className='aspect-square bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center'>
-							<p className='text-gray-500 dark:text-gray-400 font-inter'>
-								Photo 4
-							</p>
-						</div>
-						<div className='aspect-square bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center'>
-							<p className='text-gray-500 dark:text-gray-400 font-inter'>
-								Photo 5
-							</p>
-						</div>
-						<div className='aspect-square bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center'>
-							<p className='text-gray-500 dark:text-gray-400 font-inter'>
-								Photo 6
-							</p>
-						</div>
+		<div className='h-full lg:pb-12 px-6 lg:px-12 xl:px-20'>
+			<div className='max-w-7xl mx-auto'>
+				<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-10 lg:mb-4'>
+					<div className='flex-1'>
+						<ShotsHeader
+							title='Shots'
+							description='My Photography Collection'
+						/>
+					</div>
+					<div className='flex-shrink-0 animate-slide-up animation-delay-200'>
+						<a
+							href='https://vsco.co/hoangg227/gallery'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='inline-block'>
+							<Button
+								size='default'
+								className='rounded-full text-white text-sm font-inter font-medium px-3 py-3 h-auto bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-0'>
+								<img
+									src={VSCOSeal}
+									alt='VSCO'
+									className='w-6 h-6 mr-1 invert brightness-0 contrast-200 dark:brightness-100 dark:contrast-0'
+								/>
+								Follow me on VSCO
+							</Button>
+						</a>
 					</div>
 				</div>
 
-				<div className='flex flex-col sm:flex-row gap-4 animate-slide-up animation-delay-800'>
-					<Button
-						size='lg'
-						className='text-white text-lg font-inter font-medium px-8 py-6 h-auto bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'>
-						View Full Portfolio
-						<RightArrowSvg className='ml-2 w-5 h-5' />
-					</Button>
+				{/* Shots Description */}
+				<ShotsDescription />
+
+				{/* Photo Gallery */}
+				<div className='mb-16 space-y-8'>
+					<div className='space-y-6 animate-slide-up animation-delay-200'>
+						<ShotsGallery />
+					</div>
 				</div>
 			</div>
 		</div>

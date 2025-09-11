@@ -26,7 +26,7 @@ interface CardHeaderProps {
 export function CardHeader({ children, className }: CardHeaderProps) {
 	return (
 		<div className={cn('space-y-4', className)}>
-			<div className='flex space-y-4 items-start justify-between'>
+			<div className='flex flex-col items-start space-y-3 mb-3 sm:mb-0 sm:flex-row sm:space-y-4 sm:justify-between'>
 				{children}
 			</div>
 		</div>

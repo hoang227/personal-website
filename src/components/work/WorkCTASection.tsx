@@ -24,7 +24,7 @@ export default function WorkCTASection({
 				</p>
 				<Button
 					size='lg'
-					className='text-lg font-inter font-medium px-8 py-6 h-auto bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'
+					className='w-full sm:w-auto text-lg font-inter font-medium px-8 py-6 h-auto bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'
 					onClick={() => window.open(`mailto:${email}`, '_blank')}>
 					{buttonText}
 				</Button>

@@ -48,29 +48,28 @@ export const workData = {
 			image: '/screenshots/reise-sc.png',
 		},
 		// Task Management App
+		// {
+		// 	id: generateProjectId(),
+		// 	title: 'Task Management App',
+		// 	description:
+		// 		'A collaborative task management application with real-time updates.',
+		// 	technologies: [
+		// 		SKILLS.REACT_JS,
+		// 		SKILLS.TYPESCRIPT,
+		// 		SKILLS.SOCKET_IO,
+		// 		SKILLS.MONGODB,
+		// 	],
+		// 	category: 'Full Stack',
+		// 	github: 'https://github.com/yourusername/task-manager',
+		// 	live: 'https://task-manager-demo.com',
+		// 	featured: false,
+		// 	emoji: '📋',
+		// },
+		// Personal Website
 		{
 			id: generateProjectId(),
-			title: 'Task Management App',
-			description:
-				'A collaborative task management application with real-time updates.',
-			technologies: [
-				SKILLS.REACT_JS,
-				SKILLS.TYPESCRIPT,
-				SKILLS.SOCKET_IO,
-				SKILLS.MONGODB,
-			],
-			category: 'Full Stack',
-			github: 'https://github.com/yourusername/task-manager',
-			live: 'https://task-manager-demo.com',
-			featured: false,
-			emoji: '📋',
-		},
-		// Portfolio Website
-		{
-			id: generateProjectId(),
-			title: 'Portfolio Website',
-			description:
-				'A modern, responsive portfolio website with dark mode and animations.',
+			title: 'Personal Website',
+			description: 'My personal website.',
 			technologies: [
 				SKILLS.REACT_JS,
 				SKILLS.TYPESCRIPT,
@@ -79,34 +78,51 @@ export const workData = {
 			category: 'Frontend',
 			github: 'https://github.com/hoang227/personal-website',
 			live: 'https://www.hoangcodes.com/',
-			featured: true,
+			featured: false,
 			emoji: '🎨',
 			image: '/screenshots/portfolio-sc.png',
 		},
 		// Dating App
+		// {
+		// 	id: generateProjectId(),
+		// 	title: 'Dating App',
+		// 	description:
+		// 		'A mobile dating app focusing on user experience and real-time features for meaningful connections.',
+		// 	technologies: [
+		// 		SKILLS.REACT_NATIVE,
+		// 		SKILLS.FIREBASE,
+		// 		SKILLS.SOCKET_IO,
+		// 		SKILLS.REDUX,
+		// 	],
+		// 	category: 'Mobile',
+		// 	github: 'https://github.com/yourusername/dating-app',
+		// 	live: 'https://dating-app-demo.com',
+		// 	featured: false,
+		// 	emoji: '💕',
+		// },
+		// Resonance Website
 		{
 			id: generateProjectId(),
-			title: 'Dating App',
+			title: 'NUS Resonance Website',
 			description:
-				'A mobile dating app focusing on user experience and real-time features for meaningful connections.',
+				'A comprehensive portal for NUS Resonance members to access announcements, administrative tools and resource sharing within the club.',
 			technologies: [
-				SKILLS.REACT_NATIVE,
-				SKILLS.FIREBASE,
-				SKILLS.SOCKET_IO,
-				SKILLS.REDUX,
+				SKILLS.REACT_JS,
+				SKILLS.JAVASCRIPT,
+				SKILLS.TAILWIND_CSS_ALT,
 			],
-			category: 'Mobile',
-			github: 'https://github.com/yourusername/dating-app',
-			live: 'https://dating-app-demo.com',
-			featured: false,
-			emoji: '💕',
+			category: 'Frontend',
+			live: 'https://www.nusresonance.com/',
+			featured: true,
+			emoji: '🎶',
+			image: '/screenshots/resonance-sc.png',
 		},
 	] as Project[],
 
 	cta: {
 		title: 'Interested in Working Together?',
 		description:
-			"I'm always open to discussing new opportunities and exciting projects. Let's create something amazing together!",
+			"I'm always open to discussing new opportunities and exciting projects!",
 		buttonText: 'Get In Touch',
 		email: 'hoangg227@gmail.com',
 	},
