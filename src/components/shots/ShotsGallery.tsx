@@ -103,16 +103,6 @@ export const ShotsGallery = () => {
 					<p className='text-gray-500 dark:text-gray-400 font-inter'>
 						Loading images...
 					</p>
-					<div className='w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-4'>
-						<div
-							className='bg-blue-600 h-2 rounded-full transition-all duration-300'
-							style={{
-								width:
-									shotsData.length > 0
-										? `${(imagesLoaded / shotsData.length) * 100}%`
-										: '0%',
-							}}></div>
-					</div>
 				</div>
 			)}
 		</div>

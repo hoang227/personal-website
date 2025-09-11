@@ -4,15 +4,30 @@ import type { Album } from '@/data/musicData'
 interface AlbumCoverProps {
 	album: Album
 	className?: string
+	onImageLoad?: () => void
 }
 
-export const AlbumCover = ({ album, className = '' }: AlbumCoverProps) => {
+export const AlbumCover = ({
+	album,
+	className = '',
+	onImageLoad,
+}: AlbumCoverProps) => {
 	if (album.imageUrl) {
 		return (
 			<img
 				src={album.imageUrl}
 				alt={`${album.name} album cover`}
 				className={`rounded-lg object-cover group-hover:scale-105 transition-transform duration-200 shadow-lg ${className}`}
+				onLoad={() => {
+					console.log(`Image loaded: ${album.name}`)
+					onImageLoad?.()
+				}}
+				onError={() => {
+					console.error(`Failed to load image: ${album.imageUrl}`)
+					onImageLoad?.() // Still call onImageLoad to prevent infinite loading
+				}}
+				loading='eager'
+				fetchPriority='high'
 			/>
 		)
 	}

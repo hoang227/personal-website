@@ -5,12 +5,20 @@ import { AlbumMetadata } from './AlbumMetadata'
 
 interface DesktopAlbumCardProps {
 	album: Album
+	onImageLoad?: () => void
 }
 
-export const DesktopAlbumCard = ({ album }: DesktopAlbumCardProps) => (
+export const DesktopAlbumCard = ({
+	album,
+	onImageLoad,
+}: DesktopAlbumCardProps) => (
 	<div className='hidden md:block'>
 		<div className='relative mb-3'>
-			<AlbumCover album={album} className='w-full aspect-square' />
+			<AlbumCover
+				album={album}
+				className='w-full aspect-square'
+				onImageLoad={onImageLoad}
+			/>
 			<div className='absolute top-2 right-2 bg-black/70 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
 				<ExternalLink className='w-3 h-3' />
 			</div>

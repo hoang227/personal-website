@@ -5,12 +5,20 @@ import { AlbumMetadata } from './AlbumMetadata'
 
 interface MobileAlbumCardProps {
 	album: Album
+	onImageLoad?: () => void
 }
 
-export const MobileAlbumCard = ({ album }: MobileAlbumCardProps) => (
+export const MobileAlbumCard = ({
+	album,
+	onImageLoad,
+}: MobileAlbumCardProps) => (
 	<div className='flex items-start space-x-4 md:hidden'>
 		<div className='flex-shrink-0'>
-			<AlbumCover album={album} className='w-16 h-16' />
+			<AlbumCover
+				album={album}
+				className='w-16 h-16'
+				onImageLoad={onImageLoad}
+			/>
 		</div>
 		<div className='flex-1 min-w-0'>
 			<div className='flex items-start justify-between'>
