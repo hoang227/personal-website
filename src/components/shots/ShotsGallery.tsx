@@ -4,7 +4,6 @@ import { extractAllShotsEXIF, type ShotEXIFData } from '@/lib/shotsExtract'
 export const ShotsGallery = () => {
 	const [shotsData, setShotsData] = useState<ShotEXIFData[]>([])
 	const [loading, setLoading] = useState<boolean>(false)
-	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
 		const loadShotsData = async () => {
@@ -15,7 +14,7 @@ export const ShotsGallery = () => {
 				console.log(data)
 				setShotsData(data)
 			} catch (error) {
-				setError('Failed to load shots data')
+				console.log(error)
 			}
 		}
 
