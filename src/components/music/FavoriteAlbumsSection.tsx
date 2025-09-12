@@ -63,9 +63,11 @@ export default function FavoriteAlbumsSection({
 				<h4 className='font-inter font-semibold text-xl text-foreground mb-4'>
 					{title}
 				</h4>
-				<div className='text-center py-12'>
-					<div className='text-6xl opacity-40 mb-4'>🎵</div>
-					<p className='text-gray-500 dark:text-gray-400 font-inter'>
+				<div className='flex flex-col items-center justify-center py-12 space-y-4'>
+					<div className='relative'>
+						<div className='w-8 h-8 border-4 border-gray-200 dark:border-gray-600 border-t-primary rounded-full animate-spin'></div>
+					</div>
+					<p className='text-sm text-gray-600 dark:text-gray-400 font-medium'>
 						Loading albums...
 					</p>
 				</div>

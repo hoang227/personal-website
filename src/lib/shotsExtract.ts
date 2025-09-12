@@ -12,6 +12,16 @@ export interface ShotEXIFData {
 	focalLength?: string
 }
 
+interface RawEXIFData {
+	ExposureTime?: number
+	Make?: string
+	Model?: string
+	LensModel?: string
+	FNumber?: number
+	ISO?: number
+	FocalLength?: number
+}
+
 // List of all image files in the public/shots folder
 const shotFiles = [
 	'DSCF7449.jpg',
@@ -56,7 +66,7 @@ const shotFiles = [
 ]
 
 // Function to format EXIF data
-const formatEXIFData = (rawData: any): Partial<ShotEXIFData> => {
+const formatEXIFData = (rawData: RawEXIFData | null): Partial<ShotEXIFData> => {
 	if (!rawData) {
 		return {
 			camera: 'Fujifilm X-T5',
@@ -107,6 +117,7 @@ export const extractEXIFFromImage = async (
 		}
 	} catch (error) {
 		// Return default data if extraction fails
+		console.log(error)
 		return {
 			id,
 			filename,
