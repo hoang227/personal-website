@@ -7,30 +7,34 @@ import {
 
 export const ShotsGallery = () => {
 	const [shotsData, setShotsData] = useState<ShotEXIFData[]>([])
+	const [initialLoading, setInitialLoading] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
 	const remainingDataLoaded = useRef<boolean>(false)
 
 	useEffect(() => {
 		const loadShotsData = async () => {
 			try {
-				setLoading(true)
+				setInitialLoading(true)
 				console.log('loading EXIF')
 
 				// Load first 8 images eagerly
 				const firstEightData = await extractFirstEightShotsEXIF()
 				setShotsData(firstEightData)
-				setLoading(false)
+				setInitialLoading(false)
 				console.log('done loading first 8 EXIF')
 
 				// Load remaining images in background (only once)
 				if (!remainingDataLoaded.current) {
 					remainingDataLoaded.current = true
+					setLoading(true)
 					const remainingData = await extractRemainingShotsEXIF()
 					setShotsData((prev) => [...prev, ...remainingData])
+					setLoading(false)
 					console.log('done loading all EXIF')
 				}
 			} catch (error) {
 				console.log(error)
+				setInitialLoading(false)
 				setLoading(false)
 			}
 		}
@@ -43,7 +47,7 @@ export const ShotsGallery = () => {
 			<h4 className='font-inter font-semibold text-xl text-foreground mb-4'>
 				Featured Shots
 			</h4>
-			{loading ? (
+			{initialLoading ? (
 				<div className='flex flex-col items-center justify-center py-12 space-y-4'>
 					<div className='relative'>
 						<div className='w-8 h-8 border-4 border-gray-200 dark:border-gray-600 border-t-primary rounded-full animate-spin'></div>
@@ -92,6 +96,16 @@ export const ShotsGallery = () => {
 							</div>
 						)
 					})}
+					{loading && (
+						<div className='flex flex-col items-center justify-center py-12 space-y-4'>
+							<div className='relative'>
+								<div className='w-8 h-8 border-4 border-gray-200 dark:border-gray-600 border-t-primary rounded-full animate-spin'></div>
+							</div>
+							<p className='text-sm text-gray-600 dark:text-gray-400 font-medium'>
+								Loading more shots...
+							</p>
+						</div>
+					)}
 				</div>
 			)}
 		</div>
