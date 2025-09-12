@@ -1,20 +1,37 @@
-import { useState, useEffect } from 'react'
-import { extractAllShotsEXIF, type ShotEXIFData } from '@/lib/shotsExtract'
+import { useState, useEffect, useRef } from 'react'
+import {
+	extractFirstEightShotsEXIF,
+	extractRemainingShotsEXIF,
+	type ShotEXIFData,
+} from '@/lib/shotsExtract'
 
 export const ShotsGallery = () => {
 	const [shotsData, setShotsData] = useState<ShotEXIFData[]>([])
 	const [loading, setLoading] = useState<boolean>(false)
+	const remainingDataLoaded = useRef<boolean>(false)
 
 	useEffect(() => {
 		const loadShotsData = async () => {
 			try {
 				setLoading(true)
-				const data = await extractAllShotsEXIF()
+				console.log('loading EXIF')
+
+				// Load first 8 images eagerly
+				const firstEightData = await extractFirstEightShotsEXIF()
+				setShotsData(firstEightData)
 				setLoading(false)
-				console.log(data)
-				setShotsData(data)
+				console.log('done loading first 8 EXIF')
+
+				// Load remaining images in background (only once)
+				if (!remainingDataLoaded.current) {
+					remainingDataLoaded.current = true
+					const remainingData = await extractRemainingShotsEXIF()
+					setShotsData((prev) => [...prev, ...remainingData])
+					console.log('done loading all EXIF')
+				}
 			} catch (error) {
 				console.log(error)
+				setLoading(false)
 			}
 		}
 

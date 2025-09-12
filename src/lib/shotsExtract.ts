@@ -100,10 +100,14 @@ const formatEXIFData = (rawData: RawEXIFData | null): Partial<ShotEXIFData> => {
 
 // Function to extract EXIF data from a single image
 export const extractEXIFFromImage = async (
-	filename: string
+	filename: string,
+	customIndex?: number
 ): Promise<ShotEXIFData> => {
 	const imagePath = `/shots/${filename}`
-	const id = `shot-${shotFiles.indexOf(filename) + 1}`
+	const id =
+		customIndex !== undefined
+			? `shot-${customIndex + 1}`
+			: `shot-${shotFiles.indexOf(filename) + 1}`
 
 	try {
 		const rawExifData = await exifr.parse(imagePath)
@@ -153,6 +157,42 @@ export const extractAllShotsEXIF = async (): Promise<ShotEXIFData[]> => {
 			await new Promise((resolve) => setTimeout(resolve, 100))
 		}
 	}
+
+	return results
+}
+
+// Function to extract EXIF data from first 8 images only
+export const extractFirstEightShotsEXIF = async (): Promise<ShotEXIFData[]> => {
+	const results: ShotEXIFData[] = []
+	const firstEightFiles = shotFiles.slice(0, 8)
+
+	// Process first 8 images with their correct indices
+	const promises = firstEightFiles.map((filename, index) =>
+		extractEXIFFromImage(filename, index)
+	)
+
+	const batchResults = await Promise.all(promises)
+	results.push(...batchResults)
+
+	return results
+}
+
+// Function to extract EXIF data from remaining images (after first 8)
+export const extractRemainingShotsEXIF = async (): Promise<ShotEXIFData[]> => {
+	const results: ShotEXIFData[] = []
+	const remainingFiles = shotFiles.slice(8)
+
+	if (remainingFiles.length === 0) {
+		return results
+	}
+
+	// Process remaining images with their correct indices (starting from 8)
+	const promises = remainingFiles.map((filename, index) =>
+		extractEXIFFromImage(filename, 8 + index)
+	)
+
+	const batchResults = await Promise.all(promises)
+	results.push(...batchResults)
 
 	return results
 }
