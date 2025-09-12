@@ -57,11 +57,11 @@ export const aboutData = {
 			location: 'Singapore, SG',
 			period: 'Jun 2024 – Nov 2024',
 			responsibilities: [
-				'Developed and maintained automated test scripts using WebdriverIO, reducing manual testing time by 80% and improving regression testing consistency.',
+				'Built WebdriverIO automated tests, cutting manual QA time by 80% and standardizing regression coverage.',
 				'Implemented the Page Object Model (POM) in automated scripts, increasing code reusability and cutting script maintenance efforts by 50%.',
 				'Tested and validated critical features in the NUS Promotion and Tenure System, ensuring reliable performance for 500+ faculty and staff users.',
 				'Partnered with developers, QA engineers, and project managers to identify and resolve bugs, contributing to a 30% reduction in post-release defects.',
-				'Led comprehensive User Acceptance Testing (UAT), achieving 100% sign-off from stakeholders and ensuring the system met functional and business requirements.',
+				'Led weekly end-to-end UAT with stakeholders, securing 100% sign-off.',
 				'Authored detailed test observation forms and bug reports, improving communication efficiency with stakeholders and accelerating bug resolution time by 25%.',
 				'Managed and validated test data using SQL Developer, ensuring accuracy across multiple testing scenarios and reducing data-related test failures.',
 			],
@@ -85,7 +85,7 @@ export const aboutData = {
 			period: '2024 - Present',
 			responsibilities: [
 				'Developed a customizable photobook e-commerce store using Hydrogen and Shopify.',
-				'Developed an interactive photobook editor, enabling users to customize layouts, images, and text for a personalized product experience.',
+				'Designed an interactive photobook editor, enabling users to customize layouts, images, and text for a personalized product experience.',
 				'Coordinated regular requirement-gathering sessions with co-founders, ensuring development aligned with business objectives and design standards.',
 				'Collaborated closely with the designer to implement consistent UI/UX and branding, delivering a visually cohesive, user-friendly e-commerce experience.',
 			],
@@ -96,7 +96,7 @@ export const aboutData = {
 			period: '2023 - Present',
 			responsibilities: [
 				'Built and maintained the official website for the NUS Acapella Club, serving as a central platform for public engagement and member services.',
-				'Developed a members’ portal with audition schedules, performance details, calendars, bulletins, and resource booking, enhancing communication and accessibility within the club.',
+				'Developed a members’ portal with audition schedules, performance details, calendars, bulletins, and resource booking, enhancing communication and accessibility for 100+ members of the club.',
 				'Developed a public-facing site to showcase the club’s mission, activities, and performances, increasing visibility and outreach to prospective members and audiences.',
 				'Collaborated with a student team to deliver a user-friendly, visually cohesive website that aligned with the club’s branding and operational needs.',
 			],
@@ -108,7 +108,7 @@ export const aboutData = {
 			title: 'NUS Sheares Hall',
 			period: 'Aug 2020 - Aug 2024',
 			responsibilities: [
-				'President, Sheares Hall A capella – Led a team of 20+ singers, organised and facilitated weekly rehearsals, and arranged musical scores for hall-wide performances attended by 200+ residents.',
+				'President, Sheares Hall A capella – Led a team of 20+ singers, directed rehearsals, arranging scores that enabled 50+ residents to perform hall-wide showcases.',
 				'Member, Arts Council – Coordinated with cultural CCA leaders to plan and execute annual hall-wide cultural events, engaging over 500 participants.',
 				'Member, Block Committee / Sheares Choir / Sheares Band – Contributed actively to community life and music ensembles, supporting performances and block-level initiatives.',
 			],

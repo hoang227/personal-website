@@ -48,6 +48,20 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, isOpen }) => {
 								{item.title}
 							</StyledNavLink>
 						))}
+
+						{/* Resume Link */}
+						<button
+							onClick={() => {
+								window.open('/resume.pdf', '_blank')
+								closeMenu()
+							}}
+							className={`block w-full py-3 px-4 rounded-lg hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white text-left transition-all duration-300 ${
+								isOpen ? 'animate-slide-in-right' : ''
+							}`}
+							style={{ animationDelay: `${(navMenuItems.length + 1) * 80}ms` }}>
+							<span className='text-sm opacity-80 mr-2'>📄</span>
+							<span className='text-blue-500 font-medium'>Resume</span>
+						</button>
 					</nav>
 				</div>
 			</div>
