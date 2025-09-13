@@ -1,9 +1,14 @@
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+
 const boldText = 'font-medium text-primary'
 const coloredText =
 	'font-medium bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent'
 
-export const ShotsDescription = () => (
-	<div className='mb-8 animate-slide-up animation-delay-200'>
+export const ShotsDescription = () => {
+	const [isExpanded, setIsExpanded] = useState(false)
+
+	const fullText = (
 		<p className='font-light text-sm md:text-lg font-inter text-muted-foreground leading-relaxed max-w-full'>
 			Photography is my way of seeing the world{' '}
 			<span className={boldText}>differently</span>, of turning{' '}
@@ -24,5 +29,33 @@ export const ShotsDescription = () => (
 			<span className={boldText}>fleeting</span>, and often{' '}
 			<span className={boldText}>unspoken</span>.
 		</p>
-	</div>
-)
+	)
+
+	const truncatedText = (
+		<p className='font-light text-sm md:text-lg font-inter text-muted-foreground leading-relaxed max-w-full'>
+			Photography is my way of seeing the world{' '}
+			<span className={boldText}>differently</span>, of turning{' '}
+			<span className={boldText}>ordinary</span> scenes into{' '}
+			<span className={coloredText}>visual stories</span>...
+		</p>
+	)
+
+	return (
+		<div className='mb-5 sm:mb-8 animate-slide-up animation-delay-200'>
+			{/* Desktop: Always show full text */}
+			<div className='hidden sm:block'>{fullText}</div>
+
+			{/* Mobile: Show truncated/expanded text with toggle */}
+			<div className='sm:hidden'>
+				{isExpanded ? fullText : truncatedText}
+				<Button
+					variant='ghost'
+					size='sm'
+					onClick={() => setIsExpanded(!isExpanded)}
+					className='mt-2 text-xs text-muted-foreground hover:text-foreground p-0 h-auto font-inter'>
+					{isExpanded ? 'Show less' : 'Read more'}
+				</Button>
+			</div>
+		</div>
+	)
+}

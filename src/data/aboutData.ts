@@ -139,6 +139,5 @@ export const aboutData = {
 		primaryButtonText: 'View My Work',
 		primaryButtonLink: '/work',
 		secondaryButtonText: 'Get In Touch',
-		email: 'hoangg227@gmail.com',
 	},
 }

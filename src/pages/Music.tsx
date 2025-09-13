@@ -9,7 +9,7 @@ export default function MusicPage() {
 		<div className='h-full lg:pb-12 px-6 lg:px-12 xl:px-20'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Header with Spotify Button */}
-				<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-10 lg:mb-4'>
+				<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6 lg:mb-4'>
 					<div className='flex-1'>
 						<MusicHeader
 							title={musicData.header.title}

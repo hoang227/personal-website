@@ -1,7 +1,14 @@
 import { Button } from '@/components/ui/button'
 import { Download } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 export default function ResumePage() {
+	const [iframeKey, setIframeKey] = useState(0)
+
+	useEffect(() => {
+		// Force iframe reload when component mounts
+		setIframeKey((prev) => prev + 1)
+	}, [])
 	const handleDownload = () => {
 		const link = document.createElement('a')
 		link.href = '/resume.pdf'
@@ -28,6 +35,7 @@ export default function ResumePage() {
 					<div className='w-full lg:w-auto lg:order-1 animate-slide-up animation-delay-200'>
 						<div className='bg-card rounded-lg border border-border overflow-hidden shadow-lg'>
 							<iframe
+								key={iframeKey}
 								src='/resume.pdf#toolbar=0&navpanes=0&scrollbar=1&view=FitH&zoom=50'
 								className='w-full lg:w-[750px] xl:w-[850px] h-[800px] border-0'
 								title='Nguyen Minh Hoang - Resume'

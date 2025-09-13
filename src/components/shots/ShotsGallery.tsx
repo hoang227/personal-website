@@ -14,6 +14,7 @@ export const ShotsGallery = () => {
 	const [imageLoadStates, setImageLoadStates] = useState<
 		Record<string, boolean>
 	>({})
+	const [selectedShot, setSelectedShot] = useState<string | null>(null)
 	const remainingDataLoaded = useRef<boolean>(false)
 
 	// Function to preload images
@@ -29,6 +30,17 @@ export const ShotsGallery = () => {
 	// Function to handle image load
 	const handleImageLoad = (shotId: string) => {
 		setImageLoadStates((prev) => ({ ...prev, [shotId]: true }))
+	}
+
+	// Function to handle shot selection
+	const handleShotClick = (shotId: string) => {
+		if (selectedShot === shotId) {
+			// If clicking the same shot, deselect it
+			setSelectedShot(null)
+		} else {
+			// Select the new shot
+			setSelectedShot(shotId)
+		}
 	}
 
 	// Function to shuffle the current shots data
@@ -82,16 +94,16 @@ export const ShotsGallery = () => {
 	}, [])
 
 	return (
-		<div className='bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700'>
-			<div className='flex items-center justify-between mb-4'>
-				<h4 className='font-inter font-semibold text-xl text-foreground'>
+		<div className='bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-gray-700'>
+			<div className='flex items-center justify-between mb-3 sm:mb-4'>
+				<h4 className='font-inter font-semibold text-lg sm:text-xl text-foreground'>
 					Featured Shots
 				</h4>
 				<Button
 					onClick={shuffleShots}
 					disabled={initialLoading || loading}
 					size='sm'
-					className='flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-inter font-medium px-4 py-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'>
+					className='hidden sm:flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-inter font-medium px-4 py-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'>
 					<Shuffle className='w-4 h-4' />
 					Shuffle
 				</Button>
@@ -106,49 +118,56 @@ export const ShotsGallery = () => {
 					</p>
 				</div>
 			) : (
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+				<div className='grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6'>
 					{shotsData.map((shot, index) => {
+						const isSelected = selectedShot === shot.id
 						return (
 							<div
 								key={shot.id}
-								className='group hover:scale-105 transition-transform duration-500 cursor-pointer'>
-								{/* Camera details border */}
-								<div className='border-2 border-gray-300 dark:border-gray-600 rounded-lg p-2 group-hover:border-primary transition-colors duration-300'>
-									{/* Top border - Camera and Lens */}
-									<div className='mb-3 mt-1 px-2'>
-										<div className='mb-1 text-xs font-medium text-gray-600 dark:text-gray-400 font-mono'>
-											Camera: {shot.camera}
+								className='group hover:scale-105 transition-transform duration-500 cursor-pointer'
+								onClick={() => handleShotClick(shot.id)}>
+								{/* Image container with EXIF overlay */}
+								<div className='aspect-square rounded-lg overflow-hidden relative border-2 border-gray-300 dark:border-gray-600 group-hover:border-primary transition-colors duration-300'>
+									{!imageLoadStates[shot.id] && (
+										<div className='absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg'>
+											<div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer'></div>
 										</div>
-										<div className='text-xs font-medium text-gray-600 dark:text-gray-400 font-mono'>
-											Lens: {shot.lens}
-										</div>
-									</div>
+									)}
+									<img
+										src={shot.imagePath}
+										alt={shot.id}
+										loading={index < 8 ? 'eager' : 'lazy'}
+										onLoad={() => handleImageLoad(shot.id)}
+										className={`w-full h-full object-cover group-hover:brightness-110 group-hover:scale-115 transition-all duration-500 ${
+											imageLoadStates[shot.id] ? 'opacity-100' : 'opacity-0'
+										}`}
+									/>
 
-									{/* Image container with skeleton loading */}
-									<div className='aspect-square rounded-lg overflow-hidden relative'>
-										{!imageLoadStates[shot.id] && (
-											<div className='absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg'>
-												<div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer'></div>
+									{/* EXIF Information Overlay */}
+									{isSelected && imageLoadStates[shot.id] && (
+										<div className='absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-3'>
+											<div className='text-white space-y-1 sm:space-y-1.5'>
+												<div className='text-[9px] font-light font-mono'>
+													Camera: {shot.camera}
+												</div>
+												<div className='text-[9px] font-light font-mono'>
+													Lens: {shot.lens}
+												</div>
+												<div className='text-[9px] font-light font-mono'>
+													Aperture: {shot.aperture}
+												</div>
+												<div className='text-[9px] font-light font-mono'>
+													Shutter: {shot.shutterSpeed}
+												</div>
+												<div className='text-[9px] font-light font-mono'>
+													ISO: {shot.iso}
+												</div>
+												<div className='text-[9px] font-light font-mono'>
+													Focal: {shot.focalLength}
+												</div>
 											</div>
-										)}
-										<img
-											src={shot.imagePath}
-											alt={shot.id}
-											loading={index < 8 ? 'eager' : 'lazy'}
-											onLoad={() => handleImageLoad(shot.id)}
-											className={`w-full h-full object-cover group-hover:brightness-110 group-hover:scale-115 transition-all duration-500 ${
-												imageLoadStates[shot.id] ? 'opacity-100' : 'opacity-0'
-											}`}
-										/>
-									</div>
-
-									{/* Bottom border - Technical details */}
-									<div className='flex justify-between items-center mt-2 px-2 text-xs font-medium text-gray-600 dark:text-gray-400 font-mono'>
-										<span>{shot.aperture}</span>
-										<span>{shot.shutterSpeed}</span>
-										<span>{shot.iso}</span>
-										<span>{shot.focalLength}</span>
-									</div>
+										</div>
+									)}
 								</div>
 							</div>
 						)

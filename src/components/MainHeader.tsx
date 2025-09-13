@@ -37,6 +37,11 @@ const navMenuItems = [
 		path: '/shots',
 		icon: '📸',
 	},
+	{
+		title: 'Contact',
+		path: '/contact',
+		icon: '📧',
+	},
 ]
 
 const MainHeader: React.FC = () => {
@@ -79,16 +84,18 @@ const MainHeader: React.FC = () => {
 			{/* Right Side - Resume Button, Theme Toggle (Desktop) and Mobile Menu */}
 			<div className='flex items-center gap-2'>
 				{/* Resume Button - Hidden on mobile */}
-				<StyledNavLink to='/resume'>
-					<Button
-						variant='ghost'
-						size='sm'
-						className='hidden md:flex items-center gap-2 text-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-500'>
-						📄 Resume
-					</Button>
-				</StyledNavLink>
+				<div className='hidden md:block'>
+					<StyledNavLink to='/resume'>
+						<Button
+							variant='ghost'
+							size='sm'
+							className='flex items-center gap-2 text-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-500'>
+							📄 Resume
+						</Button>
+					</StyledNavLink>
+				</div>
 
-				{/* Theme Toggle - Hidden on mobile */}
+				{/* Theme Toggle */}
 				<ModeToggle />
 
 				{/* Mobile Menu */}

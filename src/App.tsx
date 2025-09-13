@@ -9,6 +9,7 @@ import AboutPage from './pages/About'
 import ShotsPage from './pages/Shots'
 import MusicPage from './pages/Music'
 import ResumePage from './pages/Resume'
+import ContactPage from './pages/Contact'
 
 const router = createBrowserRouter([
 	{
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
 			{ path: 'shots', element: <ShotsPage /> },
 			{ path: 'music', element: <MusicPage /> },
 			{ path: 'resume', element: <ResumePage /> },
+			{ path: 'contact', element: <ContactPage /> },
 		],
 	},
 ])

@@ -7,7 +7,6 @@ interface CTASectionProps {
 	primaryButtonText?: string
 	primaryButtonLink?: string
 	secondaryButtonText?: string
-	email?: string
 }
 
 export default function CTASection({
@@ -16,7 +15,6 @@ export default function CTASection({
 	primaryButtonText = 'View My Work',
 	primaryButtonLink = '/work',
 	secondaryButtonText = 'Get In Touch',
-	email = 'your.email@example.com',
 }: CTASectionProps) {
 	return (
 		<div className='mt-20 text-center animate-slide-up animation-delay-600'>
@@ -27,7 +25,7 @@ export default function CTASection({
 				<p className='text-muted-foreground font-inter text-lg mb-6 max-w-2xl mx-auto'>
 					{description}
 				</p>
-				<div className='flex flex-col sm:flex-row gap-4 justify-center'>
+				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
 					<Link
 						to={primaryButtonLink}
 						onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
@@ -38,13 +36,17 @@ export default function CTASection({
 							{primaryButtonText}
 						</Button>
 					</Link>
-					<Button
-						variant='outline'
-						size='lg'
-						className='w-full sm:w-auto text-md font-inter font-medium px-8 py-6 h-auto border-2 hover:bg-accent transition-all duration-300 transform hover:scale-105'
-						onClick={() => window.open(`mailto:${email}`, '_blank')}>
-						{secondaryButtonText}
-					</Button>
+					<Link
+						to='/contact'
+						onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
+						className='w-full sm:w-auto'>
+						<Button
+							variant='outline'
+							size='lg'
+							className='w-full sm:w-auto text-md font-inter font-medium px-8 py-6 h-auto border-2 hover:bg-accent transition-all duration-300 transform hover:scale-105'>
+							{secondaryButtonText}
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</div>

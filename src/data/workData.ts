@@ -124,6 +124,5 @@ export const workData = {
 		description:
 			"I'm always open to discussing new opportunities and exciting projects!",
 		buttonText: 'Get In Touch',
-		email: 'hoangg227@gmail.com',
 	},
 }

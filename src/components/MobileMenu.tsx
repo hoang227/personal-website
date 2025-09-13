@@ -13,6 +13,7 @@ const navMenuItems = [
 	{ title: 'Work', path: '/work', icon: '💼' },
 	{ title: 'Music', path: '/music', icon: '🎵' },
 	{ title: 'Shots', path: '/shots', icon: '📸' },
+	{ title: 'Contact', path: '/contact', icon: '📧' },
 ]
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, isOpen }) => {

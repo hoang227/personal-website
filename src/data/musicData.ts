@@ -13,8 +13,7 @@ export interface Album {
 export const musicData = {
 	header: {
 		title: 'Music',
-		description:
-			'Music is a huge part of my life. I love discovering new artists, exploring different genres, and sharing the songs that I love.',
+		description: 'Collection of My Favorite Music',
 	},
 
 	favoriteAlbums: [

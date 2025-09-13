@@ -6,9 +6,9 @@ import VSCOSeal from '@/assets/svg/VSCO_Seal.svg'
 
 export default function ShotsPage() {
 	return (
-		<div className='h-full lg:pb-12 px-6 lg:px-12 xl:px-20'>
+		<div className='h-full lg:pb-12 px-4 sm:px-6 lg:px-12 xl:px-20'>
 			<div className='max-w-7xl mx-auto'>
-				<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-10 lg:mb-4'>
+				<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6 lg:mb-4'>
 					<div className='flex-1'>
 						<ShotsHeader
 							title='Shots'
@@ -39,8 +39,8 @@ export default function ShotsPage() {
 				<ShotsDescription />
 
 				{/* Photo Gallery */}
-				<div className='mb-16 space-y-8'>
-					<div className='space-y-6 animate-slide-up animation-delay-200'>
+				<div className='mb-8 lg:mb-16'>
+					<div className='animate-slide-up animation-delay-200'>
 						<ShotsGallery />
 					</div>
 				</div>
