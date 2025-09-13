@@ -9,7 +9,25 @@ export const ShotsGallery = () => {
 	const [shotsData, setShotsData] = useState<ShotEXIFData[]>([])
 	const [initialLoading, setInitialLoading] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
+	const [imageLoadStates, setImageLoadStates] = useState<
+		Record<string, boolean>
+	>({})
 	const remainingDataLoaded = useRef<boolean>(false)
+
+	// Function to preload images
+	const preloadImage = (src: string): Promise<void> => {
+		return new Promise((resolve, reject) => {
+			const img = new Image()
+			img.onload = () => resolve()
+			img.onerror = reject
+			img.src = src
+		})
+	}
+
+	// Function to handle image load
+	const handleImageLoad = (shotId: string) => {
+		setImageLoadStates((prev) => ({ ...prev, [shotId]: true }))
+	}
 
 	useEffect(() => {
 		const loadShotsData = async () => {
@@ -22,6 +40,12 @@ export const ShotsGallery = () => {
 				setShotsData(firstEightData)
 				setInitialLoading(false)
 				console.log('done loading first 8 EXIF')
+
+				// Preload first 8 images for better perceived performance
+				const preloadPromises = firstEightData.map(
+					(shot) => preloadImage(shot.imagePath).catch(() => {}) // Ignore preload errors
+				)
+				await Promise.all(preloadPromises)
 
 				// Load remaining images in background (only once)
 				if (!remainingDataLoaded.current) {
@@ -75,13 +99,21 @@ export const ShotsGallery = () => {
 										</div>
 									</div>
 
-									{/* Image container with conditional loading */}
+									{/* Image container with skeleton loading */}
 									<div className='aspect-square rounded-lg overflow-hidden relative'>
+										{!imageLoadStates[shot.id] && (
+											<div className='absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg'>
+												<div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer'></div>
+											</div>
+										)}
 										<img
 											src={shot.imagePath}
 											alt={shot.id}
 											loading={index < 8 ? 'eager' : 'lazy'}
-											className='w-full h-full object-cover group-hover:brightness-110 transition-all duration-300'
+											onLoad={() => handleImageLoad(shot.id)}
+											className={`w-full h-full object-cover group-hover:brightness-110 transition-all duration-300 ${
+												imageLoadStates[shot.id] ? 'opacity-100' : 'opacity-0'
+											}`}
 										/>
 									</div>
 
