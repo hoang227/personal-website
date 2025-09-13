@@ -79,13 +79,14 @@ const MainHeader: React.FC = () => {
 			{/* Right Side - Resume Button, Theme Toggle (Desktop) and Mobile Menu */}
 			<div className='flex items-center gap-2'>
 				{/* Resume Button - Hidden on mobile */}
-				<Button
-					variant='ghost'
-					size='sm'
-					className='hidden md:flex items-center gap-2 text-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300'
-					onClick={() => window.open('/resume.pdf', '_blank')}>
-					📄 Resume
-				</Button>
+				<StyledNavLink to='/resume'>
+					<Button
+						variant='ghost'
+						size='sm'
+						className='hidden md:flex items-center gap-2 text-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300'>
+						📄 Resume
+					</Button>
+				</StyledNavLink>
 
 				{/* Theme Toggle - Hidden on mobile */}
 				<ModeToggle />
