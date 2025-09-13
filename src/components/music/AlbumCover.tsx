@@ -17,7 +17,7 @@ export const AlbumCover = ({
 			<img
 				src={album.imageUrl}
 				alt={`${album.name} album cover`}
-				className={`rounded-lg object-cover group-hover:scale-105 transition-transform duration-200 shadow-lg ${className}`}
+				className={`rounded-lg object-cover group-hover:scale-107 transition-transform duration-500 shadow-lg ${className}`}
 				onLoad={() => {
 					console.log(`Image loaded: ${album.name}`)
 					onImageLoad?.()

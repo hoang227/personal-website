@@ -83,7 +83,7 @@ const MainHeader: React.FC = () => {
 					<Button
 						variant='ghost'
 						size='sm'
-						className='hidden md:flex items-center gap-2 text-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300'>
+						className='hidden md:flex items-center gap-2 text-blue-500 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-500'>
 						📄 Resume
 					</Button>
 				</StyledNavLink>

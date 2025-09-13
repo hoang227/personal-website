@@ -23,7 +23,7 @@ interface RawEXIFData {
 }
 
 // List of all image files in the public/shots folder
-const shotFiles = [
+const originalShotFiles = [
 	'DSCF7449.jpg',
 	'DSCF7437.jpg',
 	'DSCF7436.jpg',
@@ -64,6 +64,19 @@ const shotFiles = [
 	'DSCF0918.JPG',
 	'DSCF0755.jpg',
 ]
+
+// Function to shuffle array using Fisher-Yates algorithm
+const shuffleArray = <T>(array: T[]): T[] => {
+	const shuffled = [...array]
+	for (let i = shuffled.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1))
+		;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+	}
+	return shuffled
+}
+
+// Generate shuffled array on each module load
+const shotFiles = shuffleArray(originalShotFiles)
 
 // Function to format EXIF data
 const formatEXIFData = (rawData: RawEXIFData | null): Partial<ShotEXIFData> => {

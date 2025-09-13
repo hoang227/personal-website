@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+import { Button } from '@/components/ui/button'
+import { Shuffle } from 'lucide-react'
 import {
 	extractFirstEightShotsEXIF,
 	extractRemainingShotsEXIF,
@@ -27,6 +29,19 @@ export const ShotsGallery = () => {
 	// Function to handle image load
 	const handleImageLoad = (shotId: string) => {
 		setImageLoadStates((prev) => ({ ...prev, [shotId]: true }))
+	}
+
+	// Function to shuffle the current shots data
+	const shuffleShots = () => {
+		setShotsData((prev) => {
+			const shuffled = [...prev]
+			for (let i = shuffled.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1))
+				;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+			}
+			return shuffled
+		})
+		// Keep existing load states - no need to reset since images are already loaded
 	}
 
 	useEffect(() => {
@@ -68,9 +83,19 @@ export const ShotsGallery = () => {
 
 	return (
 		<div className='bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-gray-700'>
-			<h4 className='font-inter font-semibold text-xl text-foreground mb-4'>
-				Featured Shots
-			</h4>
+			<div className='flex items-center justify-between mb-4'>
+				<h4 className='font-inter font-semibold text-xl text-foreground'>
+					Featured Shots
+				</h4>
+				<Button
+					onClick={shuffleShots}
+					disabled={initialLoading || loading}
+					size='sm'
+					className='flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-inter font-medium px-4 py-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'>
+					<Shuffle className='w-4 h-4' />
+					Shuffle
+				</Button>
+			</div>
 			{initialLoading ? (
 				<div className='flex flex-col items-center justify-center py-12 space-y-4'>
 					<div className='relative'>
@@ -86,7 +111,7 @@ export const ShotsGallery = () => {
 						return (
 							<div
 								key={shot.id}
-								className='group hover:scale-105 transition-transform duration-300 cursor-pointer'>
+								className='group hover:scale-105 transition-transform duration-500 cursor-pointer'>
 								{/* Camera details border */}
 								<div className='border-2 border-gray-300 dark:border-gray-600 rounded-lg p-2 group-hover:border-primary transition-colors duration-300'>
 									{/* Top border - Camera and Lens */}
@@ -111,7 +136,7 @@ export const ShotsGallery = () => {
 											alt={shot.id}
 											loading={index < 8 ? 'eager' : 'lazy'}
 											onLoad={() => handleImageLoad(shot.id)}
-											className={`w-full h-full object-cover group-hover:brightness-110 transition-all duration-300 ${
+											className={`w-full h-full object-cover group-hover:brightness-110 group-hover:scale-115 transition-all duration-500 ${
 												imageLoadStates[shot.id] ? 'opacity-100' : 'opacity-0'
 											}`}
 										/>
