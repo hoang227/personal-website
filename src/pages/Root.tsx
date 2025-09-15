@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import MainHeader from '@/components/MainHeader'
 import MobileMenu from '@/components/MobileMenu'
+import ScrollToTop from '@/components/ScrollToTop'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
 
 function RootLayout() {
@@ -19,6 +20,9 @@ function RootLayout() {
 
 	return (
 		<div className='min-h-screen bg-slate-50 dark:bg-black relative overflow-hidden'>
+			{/* Scroll to top on route change */}
+			<ScrollToTop />
+
 			{/* Dotted Background Pattern */}
 			<div
 				className='fixed pt-12 inset-0 opacity-50 dark:opacity-60'
