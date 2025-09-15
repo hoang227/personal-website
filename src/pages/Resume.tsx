@@ -17,7 +17,7 @@ export default function ResumePage() {
 	}
 
 	return (
-		<div className='h-full lg:pb-12 px-6 lg:px-12 xl:px-20'>
+		<div className='h-full lg:pb-12 pt-16 px-6 lg:px-12 xl:px-20'>
 			<div className='max-w-6xl mx-auto'>
 				{/* Header */}
 				<div className='flex flex-col lg:flex-row items-start justify-between gap-6 animate-slide-up'>

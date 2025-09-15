@@ -146,7 +146,7 @@ export default function ContactPage() {
 	]
 
 	return (
-		<div className='h-full pb-24 px-6 lg:px-12 xl:px-20'>
+		<div className='h-full pb-24 pt-16 px-6 lg:px-12 xl:px-20'>
 			<div className='max-w-6xl mx-auto'>
 				{/* Header */}
 				<div className='text-center mb-10 animate-slide-up hidden sm:block'>

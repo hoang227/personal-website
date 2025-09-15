@@ -6,7 +6,7 @@ import { workData } from '@/data/workData'
 
 export default function WorkPage() {
 	return (
-		<div className='h-full pb-24 px-6 lg:px-12 xl:px-20'>
+		<div className='h-full pb-24 pt-16 px-6 lg:px-12 xl:px-20'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Header */}
 				<WorkHeader

@@ -6,7 +6,7 @@ import VSCOSeal from '@/assets/svg/VSCO_Seal.svg'
 
 export default function ShotsPage() {
 	return (
-		<div className='h-full lg:pb-12 px-4 sm:px-6 lg:px-12 xl:px-20'>
+		<div className='h-full lg:pb-12 pt-16 px-4 sm:px-6 lg:px-12 xl:px-20'>
 			<div className='max-w-7xl mx-auto'>
 				<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6 lg:mb-4'>
 					<div className='flex-1'>

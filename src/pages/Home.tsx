@@ -5,7 +5,7 @@ import profilePic from '@/assets/images/profile pic.jpg'
 
 export default function HomePage() {
 	return (
-		<div className='h-full flex flex-col justify-center px-8 pb-16 lg:pt-12'>
+		<div className='h-full flex flex-col justify-center px-8 pb-16 pt-16 lg:pt-20'>
 			{/* Hero Section */}
 			<div className='max-w-6xl mx-auto'>
 				{/* Profile and Heading Section */}

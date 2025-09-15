@@ -6,7 +6,7 @@ import { musicData } from '@/data/musicData'
 
 export default function MusicPage() {
 	return (
-		<div className='h-full lg:pb-12 px-6 lg:px-12 xl:px-20'>
+		<div className='h-full lg:pb-12 pt-16 px-6 lg:px-12 xl:px-20'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Header with Spotify Button */}
 				<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6 lg:mb-4'>

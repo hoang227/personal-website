@@ -6,8 +6,6 @@ import {
 
 import { ModeToggle } from './ModeToggle'
 import StyledNavLink from './StyledNavLink'
-import MobileMenu from './MobileMenu'
-import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import { Button } from './ui/button'
 
@@ -44,22 +42,16 @@ const navMenuItems = [
 	},
 ]
 
-const MainHeader: React.FC = () => {
-	const [isOpen, setIsOpen] = useState<boolean>(false)
+interface MainHeaderProps {
+	toggleMobileMenu: () => void
+}
 
-	const toggleMenu = () => {
-		setIsOpen(!isOpen)
-	}
-
-	const closeMenu = () => {
-		setIsOpen(false)
-	}
-
+const MainHeader: React.FC<MainHeaderProps> = ({ toggleMobileMenu }) => {
 	return (
-		<div className='flex items-center justify-between w-full'>
+		<div className='flex items-center justify-between w-full my-4 890:mt-2'>
 			{/* Navigation Menu - Left Side (Hidden on mobile) */}
 
-			<div className='hidden md:block'>
+			<div className='hidden 890:block'>
 				<NavigationMenu>
 					<NavigationMenuList className='flex space-x-1'>
 						{navMenuItems.map((item) => (
@@ -75,8 +67,8 @@ const MainHeader: React.FC = () => {
 			</div>
 
 			{/* Hamburger Button */}
-			<div className='md:hidden'>
-				<Button variant='ghost' size='icon' onClick={toggleMenu}>
+			<div className='890:hidden'>
+				<Button variant='ghost' size='icon' onClick={toggleMobileMenu}>
 					<Menu />
 				</Button>
 			</div>
@@ -84,7 +76,7 @@ const MainHeader: React.FC = () => {
 			{/* Right Side - Resume Button, Theme Toggle (Desktop) and Mobile Menu */}
 			<div className='flex items-center gap-2'>
 				{/* Resume Button - Hidden on mobile */}
-				<div className='hidden md:block'>
+				<div className='hidden 890:block'>
 					<StyledNavLink to='/resume'>
 						<Button
 							variant='ghost'
@@ -97,9 +89,6 @@ const MainHeader: React.FC = () => {
 
 				{/* Theme Toggle */}
 				<ModeToggle />
-
-				{/* Mobile Menu */}
-				<MobileMenu isOpen={isOpen} closeMenu={closeMenu} />
 			</div>
 		</div>
 	)

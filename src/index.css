@@ -8,6 +8,7 @@
 @theme {
 	--font-inter: 'Inter', 'system-ui', 'sans-serif';
 	--font-mono: 'JetBrains Mono', 'monospace';
+	--breakpoint-890: 890px;
 }
 
 @layer utilities {
@@ -223,5 +224,15 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+
+	/* Hide scrollbar for all browsers */
+	html {
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+	}
+
+	html::-webkit-scrollbar {
+		display: none; /* WebKit browsers (Chrome, Safari, Edge) */
 	}
 }
