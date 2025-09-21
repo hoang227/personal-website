@@ -13,7 +13,6 @@ export default function FavoriteAlbumsSection({
 	const handleImageLoad = () => {
 		setImagesLoaded((prev) => {
 			const newCount = prev + 1
-			console.log(`Album image loaded: ${newCount}/${albums.length}`)
 			return newCount
 		})
 	}
@@ -21,7 +20,6 @@ export default function FavoriteAlbumsSection({
 	// Check if all images are loaded
 	useEffect(() => {
 		if (albums.length > 0 && imagesLoaded >= albums.length) {
-			console.log('All album images loaded!')
 			setIsLoading(false)
 		}
 	}, [imagesLoaded, albums.length])
@@ -30,7 +28,6 @@ export default function FavoriteAlbumsSection({
 	useEffect(() => {
 		if (albums.length > 0) {
 			const quickTimer = setTimeout(() => {
-				console.log('Quick fallback: showing albums')
 				setIsLoading(false)
 			}, 500) // Show albums after 500ms regardless
 
@@ -41,12 +38,10 @@ export default function FavoriteAlbumsSection({
 	// Reset image counter when albums change
 	useEffect(() => {
 		if (albums.length > 0) {
-			console.log(`Starting to load ${albums.length} albums`)
 			setImagesLoaded(0)
 			setIsLoading(true)
 			// Fallback: if images don't load within 1 second, assume they're loaded
 			const fallbackTimer = setTimeout(() => {
-				console.log('Fallback: assuming all album images loaded')
 				setImagesLoaded(albums.length)
 			}, 1000)
 

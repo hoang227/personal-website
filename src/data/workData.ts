@@ -47,24 +47,6 @@ export const workData = {
 			emoji: '📸',
 			image: '/screenshots/reise-sc.png',
 		},
-		// Task Management App
-		// {
-		// 	id: generateProjectId(),
-		// 	title: 'Task Management App',
-		// 	description:
-		// 		'A collaborative task management application with real-time updates.',
-		// 	technologies: [
-		// 		SKILLS.REACT_JS,
-		// 		SKILLS.TYPESCRIPT,
-		// 		SKILLS.SOCKET_IO,
-		// 		SKILLS.MONGODB,
-		// 	],
-		// 	category: 'Full Stack',
-		// 	github: 'https://github.com/yourusername/task-manager',
-		// 	live: 'https://task-manager-demo.com',
-		// 	featured: false,
-		// 	emoji: '📋',
-		// },
 		// Personal Website
 		{
 			id: generateProjectId(),
@@ -98,24 +80,6 @@ export const workData = {
 			emoji: '🎨',
 			image: '/screenshots/portfolio-sc.png',
 		},
-		// Dating App
-		// {
-		// 	id: generateProjectId(),
-		// 	title: 'Dating App',
-		// 	description:
-		// 		'A mobile dating app focusing on user experience and real-time features for meaningful connections.',
-		// 	technologies: [
-		// 		SKILLS.REACT_NATIVE,
-		// 		SKILLS.FIREBASE,
-		// 		SKILLS.SOCKET_IO,
-		// 		SKILLS.REDUX,
-		// 	],
-		// 	category: 'Mobile',
-		// 	github: 'https://github.com/yourusername/dating-app',
-		// 	live: 'https://dating-app-demo.com',
-		// 	featured: false,
-		// 	emoji: '💕',
-		// },
 		// Resonance Website
 	] as Project[],
 

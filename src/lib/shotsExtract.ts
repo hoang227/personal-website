@@ -134,7 +134,6 @@ export const extractEXIFFromImage = async (
 		}
 	} catch (error) {
 		// Return default data if extraction fails
-		console.log(error)
 		return {
 			id,
 			filename,

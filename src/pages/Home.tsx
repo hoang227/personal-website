@@ -39,9 +39,7 @@ export default function HomePage() {
 							National University of Singapore (NUS)
 						</span>{' '}
 						with a passion for{' '}
-						<span className='font-medium bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent'>
-							web development
-						</span>
+						<span className='font-medium text-foreground'>web development</span>
 						. I love creating simple yet powerful tools that enhance quality of
 						life.
 					</p>

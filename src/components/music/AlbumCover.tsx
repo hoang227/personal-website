@@ -19,11 +19,9 @@ export const AlbumCover = ({
 				alt={`${album.name} album cover`}
 				className={`rounded-lg object-cover group-hover:scale-107 transition-transform duration-500 shadow-lg ${className}`}
 				onLoad={() => {
-					console.log(`Image loaded: ${album.name}`)
 					onImageLoad?.()
 				}}
 				onError={() => {
-					console.error(`Failed to load image: ${album.imageUrl}`)
 					onImageLoad?.() // Still call onImageLoad to prevent infinite loading
 				}}
 				loading='eager'

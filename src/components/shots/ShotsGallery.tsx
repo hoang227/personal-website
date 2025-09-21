@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { Shuffle } from 'lucide-react'
+import { Shuffle, MousePointerClick } from 'lucide-react'
 import {
 	extractFirstEightShotsEXIF,
 	extractRemainingShotsEXIF,
@@ -15,6 +15,7 @@ export const ShotsGallery = () => {
 		Record<string, boolean>
 	>({})
 	const [selectedShot, setSelectedShot] = useState<string | null>(null)
+	const [hasUserInteracted, setHasUserInteracted] = useState<boolean>(false)
 	const remainingDataLoaded = useRef<boolean>(false)
 
 	// Function to preload images
@@ -34,6 +35,9 @@ export const ShotsGallery = () => {
 
 	// Function to handle shot selection
 	const handleShotClick = (shotId: string) => {
+		// Mark that user has interacted
+		setHasUserInteracted(true)
+
 		if (selectedShot === shotId) {
 			// If clicking the same shot, deselect it
 			setSelectedShot(null)
@@ -60,13 +64,11 @@ export const ShotsGallery = () => {
 		const loadShotsData = async () => {
 			try {
 				setInitialLoading(true)
-				console.log('loading EXIF')
 
 				// Load first 8 images eagerly
 				const firstEightData = await extractFirstEightShotsEXIF()
 				setShotsData(firstEightData)
 				setInitialLoading(false)
-				console.log('done loading first 8 EXIF')
 
 				// Preload first 8 images for better perceived performance
 				const preloadPromises = firstEightData.map(
@@ -81,10 +83,8 @@ export const ShotsGallery = () => {
 					const remainingData = await extractRemainingShotsEXIF()
 					setShotsData((prev) => [...prev, ...remainingData])
 					setLoading(false)
-					console.log('done loading all EXIF')
 				}
-			} catch (error) {
-				console.log(error)
+			} catch {
 				setInitialLoading(false)
 				setLoading(false)
 			}
@@ -103,7 +103,7 @@ export const ShotsGallery = () => {
 					onClick={shuffleShots}
 					disabled={initialLoading || loading}
 					size='sm'
-					className='hidden sm:flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-inter font-medium px-4 py-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'>
+					className='flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-inter font-medium px-4 py-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'>
 					<Shuffle className='w-4 h-4' />
 					Shuffle
 				</Button>
@@ -118,7 +118,7 @@ export const ShotsGallery = () => {
 					</p>
 				</div>
 			) : (
-				<div className='grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6'>
+				<div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6'>
 					{shotsData.map((shot, index) => {
 						const isSelected = selectedShot === shot.id
 						return (
@@ -143,26 +143,40 @@ export const ShotsGallery = () => {
 										}`}
 									/>
 
+									{/* Instruction Overlay - shown on first photo by default */}
+									{!hasUserInteracted &&
+										index === 0 &&
+										imageLoadStates[shot.id] && (
+											<div className='absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-3'>
+												<div className='text-white text-center space-y-3'>
+													<MousePointerClick className='w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 mx-auto' />
+													<div className='text-sm sm:text-base lg:text-lg font-medium'>
+														Click the photos for more information
+													</div>
+												</div>
+											</div>
+										)}
+
 									{/* EXIF Information Overlay */}
 									{isSelected && imageLoadStates[shot.id] && (
 										<div className='absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-3'>
 											<div className='text-white space-y-1 sm:space-y-1.5'>
-												<div className='text-[9px] font-light font-mono'>
+												<div className='text-[9px] sm:text-xs lg:text-sm font-light font-mono'>
 													Camera: {shot.camera}
 												</div>
-												<div className='text-[9px] font-light font-mono'>
+												<div className='text-[9px] sm:text-xs lg:text-sm font-light font-mono'>
 													Lens: {shot.lens}
 												</div>
-												<div className='text-[9px] font-light font-mono'>
+												<div className='text-[9px] sm:text-xs lg:text-sm font-light font-mono'>
 													Aperture: {shot.aperture}
 												</div>
-												<div className='text-[9px] font-light font-mono'>
+												<div className='text-[9px] sm:text-xs lg:text-sm font-light font-mono'>
 													Shutter: {shot.shutterSpeed}
 												</div>
-												<div className='text-[9px] font-light font-mono'>
+												<div className='text-[9px] sm:text-xs lg:text-sm font-light font-mono'>
 													ISO: {shot.iso}
 												</div>
-												<div className='text-[9px] font-light font-mono'>
+												<div className='text-[9px] sm:text-xs lg:text-sm font-light font-mono'>
 													Focal: {shot.focalLength}
 												</div>
 											</div>
