@@ -19,7 +19,7 @@ function generateProjectId(): number {
 
 export const workData = {
 	header: {
-		title: 'My Work',
+		title: 'Projects',
 		description:
 			'A collection of projects that showcase my passion for creating meaningful digital experiences.',
 	},
@@ -68,6 +68,22 @@ export const workData = {
 		// Personal Website
 		{
 			id: generateProjectId(),
+			title: 'NUS Resonance Website',
+			description:
+				'A comprehensive portal for NUS Resonance members to access announcements, administrative tools and resource sharing within the club.',
+			technologies: [
+				SKILLS.REACT_JS,
+				SKILLS.JAVASCRIPT,
+				SKILLS.TAILWIND_CSS_ALT,
+			],
+			category: 'Frontend',
+			live: 'https://www.nusresonance.com/',
+			featured: true,
+			emoji: '🎶',
+			image: '/screenshots/resonance-sc.png',
+		},
+		{
+			id: generateProjectId(),
 			title: 'Personal Website',
 			description: 'My personal website.',
 			technologies: [
@@ -101,22 +117,6 @@ export const workData = {
 		// 	emoji: '💕',
 		// },
 		// Resonance Website
-		{
-			id: generateProjectId(),
-			title: 'NUS Resonance Website',
-			description:
-				'A comprehensive portal for NUS Resonance members to access announcements, administrative tools and resource sharing within the club.',
-			technologies: [
-				SKILLS.REACT_JS,
-				SKILLS.JAVASCRIPT,
-				SKILLS.TAILWIND_CSS_ALT,
-			],
-			category: 'Frontend',
-			live: 'https://www.nusresonance.com/',
-			featured: true,
-			emoji: '🎶',
-			image: '/screenshots/resonance-sc.png',
-		},
 	] as Project[],
 
 	cta: {

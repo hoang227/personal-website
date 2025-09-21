@@ -1,5 +1,5 @@
 import WorkHeader from '@/components/work/WorkHeader'
-import FeaturedProjectsSection from '@/components/work/FeaturedProjectsSection'
+// import FeaturedProjectsSection from '@/components/work/FeaturedProjectsSection'
 import AllProjectsSection from '@/components/work/AllProjectsSection'
 import WorkCTASection from '@/components/work/WorkCTASection'
 import { workData } from '@/data/workData'
@@ -16,16 +16,13 @@ export default function WorkPage() {
 
 				<div className='animate-slide-up animation-delay-200'>
 					{/* Featured Projects */}
-					<FeaturedProjectsSection
+					{/* <FeaturedProjectsSection
 						projects={workData.projects}
 						title='Featured Projects'
-					/>
+					/> */}
 
 					{/* All Projects */}
-					<AllProjectsSection
-						projects={workData.projects}
-						title='All Projects'
-					/>
+					<AllProjectsSection projects={workData.projects} title='Projects' />
 
 					{/* CTA Section */}
 					<WorkCTASection {...workData.cta} />

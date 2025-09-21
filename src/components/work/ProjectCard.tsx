@@ -75,20 +75,20 @@ export default function ProjectCard({
 				<div className={`my-3 flex gap-${isFeatured ? '3' : '2'}`}>
 					{project.github && (
 						<Button
-							variant={isFeatured ? 'outline' : 'ghost'}
+							variant='outline'
 							size='sm'
-							className={isFeatured ? '' : 'text-xs'}
+							className='text-xs'
 							onClick={() => window.open(project.github, '_blank')}>
 							GitHub
 						</Button>
 					)}
 					{project.live && (
 						<Button
-							variant={isFeatured ? 'default' : 'ghost'}
+							variant='default'
 							size='sm'
-							className={isFeatured ? '' : 'text-xs'}
+							className='text-xs'
 							onClick={() => window.open(project.live, '_blank')}>
-							{isFeatured ? 'Live Demo' : 'Demo'}
+							Demo
 						</Button>
 					)}
 				</div>

@@ -37,8 +37,13 @@ export default function ResumePage() {
 							<iframe
 								key={iframeKey}
 								src='/resume.pdf#toolbar=0&navpanes=0&scrollbar=1&view=FitH&zoom=50'
-								className='w-full lg:w-[750px] xl:w-[850px] h-[800px] border-0'
+								className='w-full lg:w-[750px] xl:w-[850px] h-[600px] md:h-[700px] lg:h-[800px] border-0'
 								title='Nguyen Minh Hoang - Resume'
+								allowFullScreen
+								style={{
+									overflow: 'auto',
+									WebkitOverflowScrolling: 'touch', // Enable smooth scrolling on iOS
+								}}
 							/>
 						</div>
 					</div>
