@@ -37,7 +37,7 @@ export default function ResumePage() {
 
 						<Button
 							onClick={handleDownload}
-							className='flex-1 lg:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-inter font-medium px-4 py-3 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'>
+							className='flex-1 lg:w-auto hidden md:flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-inter font-medium px-4 py-3 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'>
 							<Download className='w-4 h-4' />
 							Download Resume
 						</Button>

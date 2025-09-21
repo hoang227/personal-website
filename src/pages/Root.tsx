@@ -48,6 +48,15 @@ function RootLayout() {
 				<Outlet />
 			</main>
 
+			{/* Footer */}
+			<footer className='mt-8 pb-8 px-6 text-center'>
+				<div className='max-w-6xl mx-auto'>
+					<p className='text-sm text-gray-600 dark:text-gray-400 font-inter'>
+						© 2025 Nguyen Minh Hoang. All rights reserved.
+					</p>
+				</div>
+			</footer>
+
 			{/* Mobile Menu - Outside nav to avoid positioning constraints */}
 			<MobileMenu isOpen={isMobileMenuOpen} closeMenu={closeMobileMenu} />
 		</div>
