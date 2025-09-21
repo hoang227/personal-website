@@ -59,7 +59,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu, isOpen }) => {
 							}`}
 							style={{ animationDelay: `${(navMenuItems.length + 1) * 80}ms` }}>
 							<span className='text-sm opacity-80 mr-2'>📄</span>
-							<span className='text-blue-500 font-medium'>Resume</span>
+							<span className='text-foreground hover:text-white font-medium'>
+								Resume
+							</span>
 						</StyledNavLink>
 					</nav>
 				</div>
