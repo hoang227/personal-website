@@ -126,7 +126,7 @@ export const aboutData = {
 			title: 'NUS Amplified',
 			period: 'Aug 2022 - Aug 2024',
 			responsibilities: [
-				'Singer in a student a cappella band, participating in weekly rehearsals to refine arrangements.',
+				'Singer in a student rock band, participating in weekly rehearsals to refine arrangements.',
 				'Performed at campus events and external gigs, contributing to live shows and community engagement.',
 			],
 		},
